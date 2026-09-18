@@ -1,0 +1,189 @@
+% !TeX program = xelatex
+\documentclass[aspectratio=169,10pt]{ctexbeamer}
+\usepackage{fontspec,graphicx,tikz,booktabs,array,colortbl}
+\usepackage{minted}
+\usetikzlibrary{calc}
+
+% 可编辑信息
+\title[ZBPU TeX 模板]{淄博职业技术大学 TeX 演示模板}
+\subtitle{人工智能学院\quad jiangxt}
+\author[jiangxt]{jiangxt}
+\institute[人工智能学院]{人工智能学院}
+\date{}
+
+% 字体与色板
+\IfFontExistsTF{Microsoft YaHei}{\setCJKmainfont{Microsoft YaHei}\setCJKsansfont{Microsoft YaHei}}{\setCJKmainfont{SimHei}\setCJKsansfont{SimHei}}
+\IfFontExistsTF{Consolas}{\setmonofont{Consolas}}{}
+\definecolor{ThemeRed}{HTML}{B7192F}
+\definecolor{TextDark}{HTML}{222222}
+\definecolor{TextGray}{HTML}{6D6D6D}
+\definecolor{SoftRose}{HTML}{FBF1F3}
+\definecolor{SoftGreen}{HTML}{EFFAF3}
+\definecolor{SoftOrange}{HTML}{FFF7ED}
+\definecolor{OrangeText}{HTML}{C86A2C}
+\definecolor{Border}{HTML}{E7D7DA}
+\definecolor{CodeBg}{HTML}{303030}
+\setbeamercolor{normal text}{fg=TextDark,bg=white}
+\setbeamercolor{frametitle}{fg=TextDark,bg=white}
+\setbeamerfont{frametitle}{size=\fontsize{12.5}{15}\selectfont,series=\bfseries}
+\setbeamersize{text margin left=7.25mm,text margin right=7.25mm}
+\setbeamertemplate{navigation symbols}{}
+
+% 顶部标识与标题
+\newcommand{\headerlogo}{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at ([xshift=5.5mm,yshift=-2.3mm]current page.north west)
+{\includegraphics[width=32.5mm]{assets/header_logo.png}};
+\end{tikzpicture}}
+\setbeamertemplate{frametitle}{\vspace*{8.7mm}\insertframetitle\par}
+
+% 三段式页脚：作者 / 课程名 / 页数，总宽 100%，高度约 9%
+\setbeamercolor{foot left}{fg=white,bg=ThemeRed}
+\setbeamercolor{foot middle}{fg=TextDark,bg=SoftRose}
+\setbeamercolor{foot right}{fg=TextGray,bg=white}
+\setbeamerfont{footline}{size=\fontsize{6.5}{8}\selectfont}
+\setbeamertemplate{footline}{\leavevmode\hbox{%
+\begin{beamercolorbox}[wd=.34\paperwidth,ht=.09\paperheight,dp=0pt,leftskip=7mm]{foot left}
+\vbox to .09\paperheight{\vfil\usebeamerfont{footline}\insertshortauthor\vfil}\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.33\paperwidth,ht=.09\paperheight,dp=0pt,center]{foot middle}
+\vbox to .09\paperheight{\vfil\usebeamerfont{footline}\insertshortinstitute\vfil}\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.33\paperwidth,ht=.09\paperheight,dp=0pt]{foot right}
+    \vbox to .09\paperheight{
+      \vfil
+      \hbox to .33\paperwidth{
+        \hfill
+        \usebeamerfont{footline}\insertframenumber\,/\,\inserttotalframenumber
+        \hspace*{10mm}
+      }
+      \vfil
+    }
+  \end{beamercolorbox}
+}} 
+
+% 通用内容命令
+\newcommand{\taskitem}[1]{\begin{tikzpicture}[baseline=(t.base)]
+\fill[ThemeRed] (0,0.17) rectangle (2.25mm,2.42mm);
+\node[anchor=west,text=TextDark,font=\fontsize{10}{13}\selectfont] (t) at (4.5mm,1.25mm) {#1};
+\end{tikzpicture}}
+\newcommand{\scenario}[3]{\begin{tikzpicture}
+\node[draw=Border,fill=#1,minimum width=41.25mm,minimum height=35mm,
+font=\fontsize{13.5}{17}\selectfont\bfseries,text=#2,align=center] {#3};
+\end{tikzpicture}}
+\setminted{
+  style=monokai,
+  bgcolor=CodeBg,
+  breaklines,
+  autogobble,
+  tabsize=4,
+  fontsize=\fontsize{9}{12}\selectfont
+}
+
+\begin{document}
+
+% 1. 封面
+\begin{frame}
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at ([xshift=8.5mm,yshift=-5.8mm]current page.north west)
+{\includegraphics[width=41.25mm]{assets/cover_logo.png}};
+\node[anchor=north east,inner sep=0pt] at ([xshift=-12.6mm,yshift=-4.5mm]current page.north east)
+{\includegraphics[width=18.2mm]{assets/cover_mark.png}};
+\node[anchor=north,text=TextDark,font=\fontsize{21}{25}\selectfont] at ([yshift=-30mm]current page.north) {\inserttitle};
+\node[anchor=north,text=ThemeRed,font=\fontsize{11}{14}\selectfont] at ([yshift=-45mm]current page.north) {\insertsubtitle};
+\node[anchor=north,text=TextDark,font=\fontsize{9.5}{12}\selectfont] at ([yshift=-70.6mm]current page.north)
+{用于课程讲授、项目汇报与教学展示};
+\end{tikzpicture}
+\end{frame}
+
+% 2. 列表型内容页（参考原第 2 页）
+\begin{frame}[t]{列表内容示例}\headerlogo
+\vspace{8mm}
+\begin{minipage}{0.9\textwidth}
+\taskitem{在此填写第一项内容}\par\vspace{6mm}
+\taskitem{在此填写第二项内容}\par\vspace{6mm}
+\taskitem{在此填写第三项内容}
+\end{minipage}
+\end{frame}
+
+% 3. 三栏场景页（参考原第 3 页）
+\begin{frame}[t]{三栏内容示例}\headerlogo
+\vspace{7mm}\centering
+\scenario{SoftRose}{ThemeRed}{主题一}\hfill
+\scenario{SoftGreen}{ThemeRed}{主题二}\hfill
+\scenario{SoftOrange}{OrangeText}{主题三}
+\vspace{5mm}
+\end{frame}
+
+% 4. 大型内容容器页（参考原第 5 页）
+\begin{frame}[t]{大图或材料页}\headerlogo
+\vspace{8mm}
+\begin{tikzpicture}
+\node[draw=Border,fill=white,minimum width=142mm,minimum height=47mm,text width=130mm,align=left,anchor=north west] at (0,0)
+{\color{TextGray}\fontsize{9.5}{12}\selectfont 在此放置图片、材料说明、二维码或其他内容。};
+\end{tikzpicture}
+\end{frame}
+
+% 5. 图文双栏页（参考原第 7 页）
+\begin{frame}[t]{校标与图片示例}\headerlogo
+\vspace{6mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.46\textwidth}
+{\fontsize{10}{14}\selectfont
+在此填写图片标题或主要说明。\par\vspace{5mm}
+可替换右侧文件路径，插入课程图片、流程图或项目成果。}
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\begin{tikzpicture}
+\node[draw=Border,fill=white,minimum width=58mm,minimum height=43.5mm,align=center]
+{\includegraphics[width=25mm]{assets/cover_mark.png}};
+\end{tikzpicture}\par\vspace{1.5mm}
+{\fontsize{8}{10}\selectfont\color{TextGray} 校标示例，可替换为其他图片}
+\end{column}
+\end{columns}
+\end{frame}
+
+% 6. 代码与提示页（参考原第 16 页）
+\begin{frame}[fragile,t]{代码块示例}\headerlogo
+\vspace{5mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.69\textwidth}
+\begingroup
+\setlength{\fboxsep}{4mm}
+\begin{minted}{python}
+# 在此输入代码
+def example(message):
+    print(message)
+
+example("Hello, ZBPU!")
+\end{minted}
+\endgroup
+\end{column}
+\begin{column}{0.28\textwidth}
+\colorbox{SoftRose}{\parbox[c][36.5mm][c]{0.88\linewidth}{\fontsize{10}{14}\selectfont
+在此填写代码说明。\par\vspace{4mm}
+修改 \texttt{\{python\}} 可切换代码语言。}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% 7. 表格页（参考原第 18 页）
+\begin{frame}[t]{表格内容示例}\headerlogo
+\vspace{2.5mm}\centering
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{2.5mm}
+{\fontsize{8.5}{11}\selectfont
+\begin{tabular}{>{\centering\arraybackslash}p{29mm} >{\centering\arraybackslash}p{29mm} >{\centering\arraybackslash}p{29mm} >{\centering\arraybackslash}p{29mm}}
+\rowcolor{ThemeRed}
+\color{white}\bfseries 项目 & \color{white}\bfseries 说明 & \color{white}\bfseries 数值 & \color{white}\bfseries 备注 \\
+\midrule
+示例 A & 在此填写 & -- & 在此填写 \\
+\midrule
+示例 B & 在此填写 & -- & 在此填写 \\
+\midrule
+示例 C & 在此填写 & -- & 在此填写 \\
+\midrule
+示例 D & 在此填写 & -- & 在此填写 \\
+\bottomrule
+\end{tabular}}
+\end{frame}
+
+\end{document}
