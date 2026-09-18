@@ -3,7 +3,7 @@
 ![](assets/header_logo.png)
 
 
-淄博职业技术大学 TeX 演示模板，适用于课程讲授与项目汇报。
+淄博职业技术大学 自用 TeX 演示模板(**非官方！！！**)，适用于课程讲授与项目汇报。
 
 
 ## 基本环境
@@ -35,6 +35,18 @@ xelatex -shell-escape -8bit template.tex
 ├─ assets/                  # 校标与页眉素材
 │  ├─ cover_logo.png
 │  ├─ cover_mark.png
-│  └─ header_logo.png
+│  ├─ header_logo.png
+│  ├─ preview-pages-1-4.png
+│  └─ preview-pages-5-8.png
 └─ .vscode/settings.json    # LaTeX Workshop 编译配置
 ```
+
+## 模板预览
+
+第 1-4 页：
+
+![第 1-4 页预览](assets/preview-pages-1-4.png)
+
+第 5-8 页：
+
+![第 5-8 页预览](assets/preview-pages-5-8.png)

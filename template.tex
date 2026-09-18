@@ -186,4 +186,16 @@ example("Hello, ZBPU!")
 \end{tabular}}
 \end{frame}
 
+% 8. 结束页
+\begin{frame}
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at ([xshift=8.5mm,yshift=-5.8mm]current page.north west)
+{\includegraphics[width=41.25mm]{assets/cover_logo.png}};
+\node[anchor=north east,inner sep=0pt] at ([xshift=-12.6mm,yshift=-4.5mm]current page.north east)
+{\includegraphics[width=18.2mm]{assets/cover_mark.png}};
+\node[anchor=center,text=ThemeRed,font=\fontsize{25}{30}\selectfont\bfseries] at ([yshift=4mm]current page.center) {谢谢观看};
+\node[anchor=north,text=TextGray,font=\fontsize{10}{13}\selectfont] at ([yshift=-9mm]current page.center) {THANK YOU};
+\end{tikzpicture}
+\end{frame}
+
 \end{document}
