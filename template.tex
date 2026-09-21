@@ -64,6 +64,26 @@
 \fill[ThemeRed] (0,0.17) rectangle (2.25mm,2.42mm);
 \node[anchor=west,text=TextDark,font=\fontsize{10}{13}\selectfont] (t) at (4.5mm,1.25mm) {#1};
 \end{tikzpicture}}
+% 固定高度列表区：有无红色副标题时，列表项均在同一内容区域内上下均匀分布
+\newcommand{\listsubtitleslot}[1]{%
+  \if\relax\detokenize{#1}\relax
+    \vphantom{\fontsize{13}{17}\selectfont\bfseries 示例副标题}\par
+  \else
+    {\color{ThemeRed}\fontsize{13}{17}\selectfont\bfseries #1}\par
+  \fi
+}
+\newenvironment{evenlist}[1][]{%
+  \vspace{2.5mm}%
+  \begin{minipage}[t][50mm][t]{0.94\textwidth}%
+    \listsubtitleslot{#1}%
+    \vspace{2mm}%
+    \begin{minipage}[t][37mm][s]{\linewidth}%
+      \vfill
+}{%
+    \end{minipage}%
+  \end{minipage}%
+}
+\newcommand{\evenitem}[1]{\taskitem{#1}\par\vfill}
 \newcommand{\scenario}[3]{\begin{tikzpicture}
 \node[draw=Border,fill=#1,minimum width=41.25mm,minimum height=35mm,
 font=\fontsize{13.5}{17}\selectfont\bfseries,text=#2,align=center] {#3};
@@ -95,12 +115,11 @@ font=\fontsize{13.5}{17}\selectfont\bfseries,text=#2,align=center] {#3};
 
 % 2. 列表型内容页（参考原第 2 页）
 \begin{frame}[t]{列表内容示例}\headerlogo
-\vspace{8mm}
-\begin{minipage}{0.9\textwidth}
-\taskitem{在此填写第一项内容}\par\vspace{6mm}
-\taskitem{在此填写第二项内容}\par\vspace{6mm}
-\taskitem{在此填写第三项内容}
-\end{minipage}
+\begin{evenlist}
+\evenitem{在此填写第一项内容}
+\evenitem{在此填写第二项内容}
+\evenitem{在此填写第三项内容}
+\end{evenlist}
 \end{frame}
 
 % 3. 三栏场景页（参考原第 3 页）
