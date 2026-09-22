@@ -32,6 +32,14 @@
             "args": [
                 "%DOCFILE%"
             ]
+        },
+        {
+            "name": "clean_beamer_cache",
+            "command": "cmd.exe",
+            "args": [
+                "/c",
+                "del /q *.nav *.snm *.vrb *.synctex.gz"
+            ]
         }
     ],
 
@@ -43,16 +51,11 @@
             ],
         },
         {
-            "name": "pdflatex",
-            "tools": [
-                "pdflatex"
-            ]
-        },
-        {
             "name": "xe->xe",
             "tools": [
                 "xelatex",
-                "xelatex"
+                "xelatex",
+                "clean_beamer_cache"
             ]
         },
         {
@@ -65,5 +68,35 @@
             ]
         }
     ],
-    "latex-workshop.latex.recipe.default": "xe->xe"
+    "latex-workshop.latex.recipe.default": "xe->xe",
+
+    // 设置编译成功后自动清理
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+
+    // （可选）自定义需要清理的文件后缀类型
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.nav",
+        "*.snm",
+        "*.gz",
+        "*.vrb",
+        "*.fdb_latexmk",
+        "*.synctex.gz",
+        "*.minted",
+    ]
 }

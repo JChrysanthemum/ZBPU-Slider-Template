@@ -332,3 +332,6 @@ TSWLatexianTemp*
 
 # minted code middle files
 _minted-template\
+
+# minted 3 cache
+minted-cache/

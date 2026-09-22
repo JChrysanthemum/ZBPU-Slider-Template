@@ -1,7 +1,8 @@
 % !TeX program = xelatex
 \documentclass[aspectratio=169,10pt]{ctexbeamer}
 \usepackage{fontspec,graphicx,tikz,booktabs,array,colortbl}
-\usepackage{minted}
+% minted 代码高亮缓存固定写入子目录，兼容 TeX Live 2026 的写入限制
+\usepackage[cachedir=minted-cache]{minted}
 \usetikzlibrary{calc}
 
 % 可编辑信息
